@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/cosmin/anaconda3/envs/afaceri-spa/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}

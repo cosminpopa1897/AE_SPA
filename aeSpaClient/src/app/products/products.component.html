@@ -1,0 +1,23 @@
+
+<div class="productWrapper row">
+  <h2 class="col-sm-12">Products is now</h2>
+
+  <div class="col-sm-4" *ngFor="let product of products">
+      <div class="productTitle">
+        <h3>
+            <a [title] = "product.name + ' details'">
+                {{product.name}}
+            </a>
+        </h3>
+      </div>
+      <div>
+        <p>
+          
+        </p>
+        <p *ngIf="product.description">
+          Description: {{ product.description }}
+        </p>
+    <button (click) = "share()"> Share </button>
+    
+  </div>
+</div>
