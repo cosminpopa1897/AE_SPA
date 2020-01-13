@@ -1,0 +1,27 @@
+<button>Create new Product</button>
+<table class='table'
+*ngIf='productList && productList.length'>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Code</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let product of productList'>
+
+            <td>
+                <a [routerLink]="['/products/', product.id]">
+                {{ product.name }}
+                </a>
+            </td>
+            <td>{{ product.code | lowercase }}</td>
+            <td>{{ product.price + 'RON'}}</td>
+            <td>{{ product.description }}</td>
+            <td><button>Edit</button><button>Delete</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -22,6 +22,10 @@ export class ProductsService {
       product.categories = jsonObject.categories.map(category => <Category>category);
     }
 
-    return product
+    return product;
+  }
+
+  castJsonArrayToProductArray(jsonArray): Product[]{
+    return jsonArray.map(jsonProduct => this.castJsonToProduct(jsonProduct));
   }
 }

@@ -9,6 +9,15 @@ import { RouterModule } from '@angular/router';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { StorePageComponent } from './store-page/store-page.component';
+import { ProductsService } from './services/products/products.service';
+import { DataService } from './services/data/data.service';
+import { CategoriesService } from './services/categories/categories.service';
+import { FormsModule } from "@angular/forms";
+import { AdminComponent } from './admin/admin.component';
+import { ProductsAdminComponent } from './admin/products-admin/products-admin.component';
+import { CategoriesAdminComponent } from './admin/categories-admin/categories-admin.component';
 
 @NgModule({
   declarations: [
@@ -17,20 +26,31 @@ import { ShippingComponent } from './shipping/shipping.component';
     ProductAlertsComponent,
     ProductDetailsComponent,
     ShoppingCartComponent,
-    ShippingComponent
+    ShippingComponent,
+    CategoriesComponent,
+    StorePageComponent,
+    AdminComponent,
+    ProductsAdminComponent,
+    CategoriesAdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProductsComponent },
+      { path: '', component: StorePageComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
       { path: 'cart', component: ShoppingCartComponent },
       { path: 'shipping', component: ShippingComponent },
+      { path: 'admin', component: AdminComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    DataService,
+    ProductsService,
+    CategoriesService
+  ],
   bootstrap: [AppComponent],
   
 })

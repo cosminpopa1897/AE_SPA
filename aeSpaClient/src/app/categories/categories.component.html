@@ -1,0 +1,7 @@
+<div class="categories row">
+    <h2 class="col-sm-12">Pick A Category</h2>
+  
+    <div class="col-sm-4" *ngFor="let category of categories">
+      <button (click) = "emitNotifyCategorySelected(category.id)"> {{category.name}} </button>
+    </div>
+  </div>

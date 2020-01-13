@@ -4,3 +4,11 @@
 .productWrapper h2{
     text-align: center;
 }
+
+.searchWrapper{
+    padding: 0;
+}
+
+.adminHost{
+    width: 90%;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { products } from './products';
 import { ProductsService } from '../services/products/products.service';
 import { Product } from '../domain/product';
@@ -10,15 +10,12 @@ import { Product } from '../domain/product';
 })
 export class ProductsComponent implements OnInit {
   
-   products = products
+  @Input() products: Product[];
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe(
-      (results) => this.products = (<any[]>results).map(result => this.productsService.castJsonToProduct(result)),
-      (error) => console.log(error)
-    );
+  
   }
 
   share(){

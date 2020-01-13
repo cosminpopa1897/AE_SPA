@@ -1,6 +1,6 @@
 
 <div class="productWrapper row">
-  <h2 class="col-sm-12">Products is now</h2>
+  <h2 class="col-sm-12">Products</h2>
 
   <div class="col-sm-4" *ngFor="let product of products">
       <div class="productTitle">
@@ -14,10 +14,10 @@
         <p>
           
         </p>
-        <p *ngIf="product.description">
-          Description: {{ product.description }}
+        <p *ngIf="product.price">
+          Price: {{ product.price + " RON" }}
         </p>
-    <button (click) = "share()"> Share </button>
+    <a [routerLink]="['/products/' + product.id]"> <button >See details </button></a>
     
   </div>
 </div>

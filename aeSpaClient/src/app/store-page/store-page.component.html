@@ -1,0 +1,23 @@
+<div class="storeWrapper row">
+    
+    <div class="categoriesTab col-md-2">
+        <div class="col-md-12 searchWrapper">
+            <h3>Search for a product</h3>
+            <input type='text'
+                       [(ngModel)]='searchString' />
+        </div>
+        <app-categories
+            [categories] = "categoryList"
+            (notifyCategorySelected) = "onCategorySelected($event)"
+        ></app-categories
+            >
+    </div>
+    
+    <div class="productsTab col-md-10">
+        <app-products
+        [products] = "filteredProductList"
+        ></app-products>
+    </div>
+
+</div>
+
