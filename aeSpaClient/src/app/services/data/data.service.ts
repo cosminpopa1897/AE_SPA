@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  
-  private apiUrl = "http://localhost:8000/";
+  private hostName = window.location.hostname;
+  private apiUrl = `http://${this.hostName}:8000/`;
   constructor(
     private httpClient: HttpClient,
     ) { }
