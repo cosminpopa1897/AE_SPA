@@ -1,0 +1,19 @@
+<h2>Edit category</h2>
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm.value)">
+
+    <div>
+        <label for="name">
+          Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+      </div>
+    
+      <div>
+        <label for="description">
+          Description
+        </label>
+        <input id="description" type="text" formControlName="description">
+      </div>
+    <button class="button" type="submit">Save</button>
+  
+  </form>
