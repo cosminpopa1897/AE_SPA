@@ -21,7 +21,7 @@ export class StorePageComponent implements OnInit {
   }
   set searchString(value: string){
     this._searchString = value;
-    this.filteredProductList = this.searchString ? this.filterProducts(this.searchString): this.productList;
+    this.filteredProductList = this.searchString ? this.filterProducts(): this.productList;
 
   }
   constructor(private productService: ProductsService,
@@ -43,15 +43,24 @@ export class StorePageComponent implements OnInit {
   }
   
   onCategorySelected($event){
+    this.selectedCategoryId = $event.id;
     this.filteredProductList = this.productList
       .filter(product => product.categories
                           .filter(category => category.id == $event.id).length != 0);
   }
 
-  filterProducts(filterString: string): Product[] {
-    filterString = filterString.toLocaleLowerCase();
+  filterProducts(): Product[] {
+    let filterString = this.searchString.toLocaleLowerCase();
     return this.productList.filter((product: Product) =>
-      product.name.toLocaleLowerCase().indexOf(filterString) !== -1);
+      product.name.toLocaleLowerCase().indexOf(filterString) !== -1
+      && (product.categories.filter(category => category.id == this.selectedCategoryId).length != 0 || this.selectedCategoryId == -1));
+  }
+
+  onCategoryFiltersClear(){
+    this.filteredProductList = this.productList;
+    this.selectedCategoryId = -1;
+    this.searchString = "";
+    
   }
 
 }

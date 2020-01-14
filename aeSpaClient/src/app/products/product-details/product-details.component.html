@@ -1,8 +1,14 @@
 <h2>Product Details</h2>
   <div *ngIf="product">
     <h3>{{ product.name }}</h3>
-    <h4>{{ product.price | currency }}</h4>
-    <p>{{ product.description }}</p>
-    <button (click) = "addToCart(product)">Buy</button>
-
+    
+    <h3>Price: </h3> <span>{{ product.price}} RON</span>
+    <h3>Code</h3> <span>{{ product.code }}</span>
+    <h3>Description</h3> <span>{{ product.description }}</span>
+    <h3>Categories</h3>
+    <ul>
+      <li *ngFor="let category of product.categories">
+        {{category.name}}
+      </li>
+    </ul>
   </div>

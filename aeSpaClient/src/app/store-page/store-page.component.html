@@ -9,6 +9,7 @@
         <app-categories
             [categories] = "categoryList"
             (notifyCategorySelected) = "onCategorySelected($event)"
+            (notifyClearCategoryFilter) = "onCategoryFiltersClear()"
         ></app-categories
             >
     </div>

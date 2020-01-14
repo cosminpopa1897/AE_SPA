@@ -10,6 +10,8 @@ export class CategoriesComponent implements OnInit {
 
   @Input() categories: Category[];
   @Output() notifyCategorySelected = new EventEmitter();
+  @Output() notifyClearCategoryFilter = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +20,10 @@ export class CategoriesComponent implements OnInit {
 
   emitNotifyCategorySelected(id){
     this.notifyCategorySelected.emit({id});
+  }
+
+  clearFilters(){
+    this.notifyClearCategoryFilter.emit();
   }
 
 
