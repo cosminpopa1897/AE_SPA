@@ -19,12 +19,43 @@ export class AdminComponent implements OnInit {
               private categoryService: CategoriesService) { }
 
   ngOnInit() {
+    this.getProducts();
+    this.getCategories();
+  }
+
+  onCategoryDelete($event){
+    if($event.id != null)
+      this.deleteCategory($event.id);
+  }
+
+  deleteCategory(id:number){
+    this.categoryService.deleteCategory(id)
+      .subscribe(
+        () => this.getCategories()
+      )
+  }
+
+  deleteProduct(id:number){
+    
+  }
+
+  getProducts(){
     this.productService.getProducts().subscribe(
-      (resultProducts) => this.productList = this.productService.castJsonArrayToProductArray(resultProducts) 
+      (resultProducts) => this.assignProductResults(resultProducts)
     );
+  }
+
+  getCategories(){
     this.categoryService.getCategories().subscribe(
       (resultCategories) => this.categoryList = this.categoryService.castJsonArrayToCategoryArray(resultCategories)
     );
+  }
+  assignProductResults(resultProducts){
+    this.productList = this.productService.castJsonArrayToProductArray(resultProducts);
+  }
+
+  assignCategoryResults(resultCategories){
+    this.categoryList = this.categoryService.castJsonArrayToCategoryArray(resultCategories)
   }
 
 }

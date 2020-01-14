@@ -17,7 +17,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   emitNotifyCategorySelected(id){
-    debugger;
     this.notifyCategorySelected.emit({id});
   }
 

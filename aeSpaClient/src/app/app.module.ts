@@ -14,10 +14,12 @@ import { StorePageComponent } from './store-page/store-page.component';
 import { ProductsService } from './services/products/products.service';
 import { DataService } from './services/data/data.service';
 import { CategoriesService } from './services/categories/categories.service';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdminComponent } from './admin/admin.component';
 import { ProductsAdminComponent } from './admin/products-admin/products-admin.component';
 import { CategoriesAdminComponent } from './admin/categories-admin/categories-admin.component';
+import { CreateCategoryComponent } from './admin/categories-admin/create-category/create-category.component';
+import { EditCategoryComponent } from './admin/categories-admin/edit-category/edit-category.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,15 @@ import { CategoriesAdminComponent } from './admin/categories-admin/categories-ad
     StorePageComponent,
     AdminComponent,
     ProductsAdminComponent,
-    CategoriesAdminComponent
+    CategoriesAdminComponent,
+    CreateCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: StorePageComponent },
@@ -44,6 +49,9 @@ import { CategoriesAdminComponent } from './admin/categories-admin/categories-ad
       { path: 'cart', component: ShoppingCartComponent },
       { path: 'shipping', component: ShippingComponent },
       { path: 'admin', component: AdminComponent },
+      { path: 'admin/category', component: CreateCategoryComponent},
+      { path: 'admin/editcategory/:id', component: EditCategoryComponent}
+
     ])
   ],
   providers: [

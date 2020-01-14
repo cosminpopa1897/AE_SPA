@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Category } from 'src/app/domain/category';
 
 @Component({
   selector: 'app-categories-admin',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesAdminComponent implements OnInit {
 
+  @Input()  categoryList: Category[] = [];
+  @Output() notifyCategoryDelete = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  emitNotifyDelete(id:number){
+    this.notifyCategoryDelete.emit({id});
   }
 
 }

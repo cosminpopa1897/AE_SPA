@@ -15,6 +15,23 @@ export class CategoriesService {
     return this.dataService.getFromApi(this.categoriesRelUrl);
   }
 
+  getCategoryById(id: number){
+    return this.dataService.getByIdFromApi(this.categoriesRelUrl, id);
+  }
+
+  createCategory(category: Category){
+    category.id = 0;
+    return this.dataService.postToApi(this.categoriesRelUrl, category);
+  }
+
+  updateCategory(category: Category){
+    return this.dataService.putToApi(this.categoriesRelUrl, category.id, category);
+  }
+
+  deleteCategory(id:number){
+    return this.dataService.deleteFromApi(this.categoriesRelUrl, id);
+  }
+
   castJsonToCategory(jsonObject): Category{
     return <Category>jsonObject;
   }
