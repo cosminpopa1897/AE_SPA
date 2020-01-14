@@ -39,13 +39,36 @@ class ProductSerializer(serializers.ModelSerializer):
         if validated_data["id"] == 0:
             validated_data.pop("id")
         product = Product.objects.create(**validated_data)
-        
         for category in categoryData:
             try:
                 searchedCategory = Category.objects.get(id=category["id"])
                 product.categories.add(searchedCategory)
+                product.save()
             except:
                 print("Nu a fost gasit")
-            product.save()
         
         return product
+    
+    def update(self, instance, validated_data):
+        print("instance: ")
+        print(instance)
+        print("validated_data: ")
+        print(validated_data)
+        oldCategories= (instance.categories).all()
+        oldCategories = list(oldCategories)
+        newCategories = validated_data.pop("categories")
+        instance.name = validated_data["name"]
+        instance.code = validated_data["code"]
+        instance.description = validated_data["description"]
+        instance.price = validated_data["price"]
+        instance.save()
+        instance.categories.set([])
+        for category in newCategories:
+            try:
+                searchedCategory = Category.objects.get(id=category["id"])
+                instance.categories.add(searchedCategory)
+                instance.save()
+            except:
+                print("Nu a fost gasit")
+
+        return instance

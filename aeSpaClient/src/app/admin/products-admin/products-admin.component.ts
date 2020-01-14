@@ -14,4 +14,16 @@ export class ProductsAdminComponent implements OnInit {
   ngOnInit() {
   }
 
+  getProducCategoriesString(product: Product){
+    let categoriesString = "";
+    for (let index = 0; index < product.categories.length; index++) {
+      const category = product.categories[index];
+      categoriesString =`${categoriesString} ${category.name}`;
+      if(index != product.categories.length -1)
+        categoriesString + ",";
+    }
+
+    return categoriesString != "" ? categoriesString : "N/A";
+  }
+
 }

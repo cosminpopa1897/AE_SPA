@@ -26,6 +26,23 @@
         </label>
         <input id="price" type="number" formControlName="price">
       </div>
+      <div>
+        <label for="categories">
+          Categories
+        </label>
+        <select (change) = "onCategorySelect($event)" formControlName="categories" id="categories">
+          <option *ngFor="let category of categories; let i = index" [value]="categories[i].id">
+            {{category.name}}
+          </option>
+        </select>
+        <p>Selecte categories</p>
+        <ul>
+          <li *ngFor="let category of selectedCategories">
+            {{category.name}} <span class="removeLink" (click) = "removeCategory(category.id)"><b> Remove</b></span>
+          </li>
+        </ul>
+      </div>
+    
     <button class="button" type="submit">Save</button>
   
   </form>

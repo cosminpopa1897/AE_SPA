@@ -20,6 +20,8 @@ import { ProductsAdminComponent } from './admin/products-admin/products-admin.co
 import { CategoriesAdminComponent } from './admin/categories-admin/categories-admin.component';
 import { CreateCategoryComponent } from './admin/categories-admin/create-category/create-category.component';
 import { EditCategoryComponent } from './admin/categories-admin/edit-category/edit-category.component';
+import { CreateProductComponent } from './admin/products-admin/create-product/create-product.component';
+import { EditProductComponent } from './admin/products-admin/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { EditCategoryComponent } from './admin/categories-admin/edit-category/ed
     ProductsAdminComponent,
     CategoriesAdminComponent,
     CreateCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,11 @@ import { EditCategoryComponent } from './admin/categories-admin/edit-category/ed
       { path: 'shipping', component: ShippingComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'admin/category', component: CreateCategoryComponent},
-      { path: 'admin/editcategory/:id', component: EditCategoryComponent}
+      { path: 'admin/editcategory/:id', component: EditCategoryComponent},
+      { path: 'admin/product', component: CreateProductComponent},
+      { path: 'admin/editproduct/:id', component: EditProductComponent}
+
+
 
     ])
   ],

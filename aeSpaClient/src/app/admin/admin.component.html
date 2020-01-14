@@ -1,9 +1,20 @@
-<!-- <app-products-admin
+
+<div class="pageControlButtons">
+    <button (click) = "toggleProducts()">Toggle products grid</button>
+    <button (click)="toggleCategories()">Toggle categories grid</button>
+</div>
+
+<div class="adminGridsWrapper">
+<app-products-admin
+*ngIf="isProductsGridVisible"
 [productList] = "productList">
-</app-products-admin> -->
+</app-products-admin>
 <app-categories-admin
+    *ngIf="isCategoriesGridVisible"
     [categoryList] = "categoryList"
     (notifyCategoryDelete) = "onCategoryDelete($event)" 
 >
 </app-categories-admin
 >
+
+</div>

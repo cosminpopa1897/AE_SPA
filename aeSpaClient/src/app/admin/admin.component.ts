@@ -13,7 +13,9 @@ import { Category } from '../domain/category';
 export class AdminComponent implements OnInit {
 
   productList: Product[] = [];
+  isProductsGridVisible: boolean = false;
   categoryList:  Category[] = [];
+  isCategoriesGridVisible: boolean = false;
 
   constructor(private productService: ProductsService,
               private categoryService: CategoriesService) { }
@@ -21,6 +23,18 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.getCategories();
+  }
+
+  toggleProducts(){
+    this.isProductsGridVisible = !this.isProductsGridVisible;
+    if(this.isProductsGridVisible)
+      this.getProducts();
+  }
+
+  toggleCategories(){
+    this.isCategoriesGridVisible = !this.isCategoriesGridVisible;
+    if(this.isCategoriesGridVisible)
+      this.getCategories();
   }
 
   onCategoryDelete($event){

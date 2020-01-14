@@ -16,6 +16,23 @@ export class ProductsService {
     return this.dataService.getFromApi(this.productsApi);
   }
 
+  getProductById(id: number){
+    return this.dataService.getByIdFromApi(this.productsApi, id);
+  }
+
+  createProduct(product: Product){
+    product.id = 0;
+    return this.dataService.postToApi(this.productsApi, product);
+  }
+
+  updateProduct(product: Product){
+    return this.dataService.putToApi(this.productsApi, product.id, product);  
+  }
+
+  deleteProduct(id: number){
+    return this.dataService.deleteFromApi(this.productsApi, id);
+  }
+
   castJsonToProduct(jsonObject): Product{
     let product = <Product>jsonObject;
     if(jsonObject.categories != null &&  isArray(jsonObject.categories)){

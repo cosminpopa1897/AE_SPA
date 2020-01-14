@@ -1,4 +1,4 @@
-<button>Create new Product</button>
+<a [routerLink]="['/admin/product']"> <button>Create new Product</button></a>
 <table class='table'
 *ngIf='productList && productList.length'>
     <thead>
@@ -7,6 +7,7 @@
             <th>Code</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Categories</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -21,7 +22,8 @@
             <td>{{ product.code | lowercase }}</td>
             <td>{{ product.price + 'RON'}}</td>
             <td>{{ product.description }}</td>
-            <td><button>Edit</button><button>Delete</button></td>
+            <td>{{ getProducCategoriesString(product)}}</td>
+            <td><a [routerLink]="['/admin/editproduct/'+product.id]" > <button>Edit</button></a> <button>Delete</button></td>
         </tr>
     </tbody>
 </table>

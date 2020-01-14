@@ -12,3 +12,20 @@
 .adminHost{
     width: 90%;
 }
+
+.removeLink{
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.removeLink:hover{
+    text-decoration:none;
+
+
+}
+
+.toolbarLink{
+    color: white !important;
+    margin-left: 200px;
+}
